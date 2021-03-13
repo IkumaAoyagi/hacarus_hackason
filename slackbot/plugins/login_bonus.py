@@ -1,23 +1,27 @@
 import datetime
 
 from slackbot.bot import respond_to
-import pandas as pd
+import slackbot_settings
+from slacker import Slacker
 
-LOGIN_RECORD = pd.DataFrame()
-LOGIN_RECORD = LOGIN_RECORD.columns(['total_working_days', 'last_worked_day'])
-LOGIN_RECORD.loc["osamu"] = {'total_working_days': 0, 'last_worked_day': 0}
-print(LOGIN_RECORD)
+TOTAL_WORKING_DAYS = {}
+LAST_WORKED_DAY = {}
+
+REWARD = {1: "resources/IMG_1939.HEIC",}
 
 @respond_to('作業開始します')
 def return_login_bonus(message):
     print("message received.")
-    print(message)
+    print(message.body )
     real_name = message.user["real_name"]
-    print(real_name)
-    try:
-        total_working_days = LOGIN_RECORD.loc['real_name', 'total_working_days']
-        print(total_working_days)
-    except KeyError:
-        LOGIN_RECORD.loc['real_name'] = [0, datetime.datetime.now()]
-    print(total_working_days)
-    message.reply(f'ログイン1日目: {real_name}')
+    if TOTAL_WORKING_DAYS.get(real_name) is None:
+        TOTAL_WORKING_DAYS[real_name] = 1
+        LAST_WORKED_DAY[real_name] = datetime.datetime.today()
+    message.reply(f'ログイン{TOTAL_WORKING_DAYS[real_name]}日目')
+
+    if REWARD.get(TOTAL_WORKING_DAYS[real_name]) is not None:
+        slacker = Slacker(slackbot_settings.API_TOKEN)
+        channel = message.channel._client.channels[message.body['channel']]
+        channel_name = channel['name']
+        print(channel_name)
+        slacker.files.upload(file_=REWARD[TOTAL_WORKING_DAYS[real_name]], channels=channel_name)
