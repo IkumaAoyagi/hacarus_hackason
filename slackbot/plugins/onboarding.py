@@ -6,7 +6,7 @@ from slackbot.bot import listen_to      # チャネル内発言で反応する�
 from slackbot.bot import default_reply  # 該当する応答がない場合に反応するデコーダ
 
 # projectsを読み込み
-pkl_file = 'C:/Users/ikuma/vscodeprojects/hacarus/hackason/hacarus_hackason/slackbot/plugins/tools/projects_dict.pkl'
+pkl_file = 'projects.pkl'    #your saved pkl file at init_projects.py
 with open(pkl_file, 'rb') as f:
     projects = pickle.load(f)
 
