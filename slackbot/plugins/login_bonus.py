@@ -7,7 +7,9 @@ from slacker import Slacker
 TOTAL_WORKING_DAYS = {}
 LAST_WORKED_DAY = {}
 
-REWARD = {1: "resources/IMG_1939.HEIC",}
+REWARD = {
+    1: "resources/IMG_1939.HEIC",
+    3: "resources/"}
 
 @respond_to('作業開始します')
 def return_login_bonus(message):
