@@ -1,0 +1,2 @@
+$ sudo apt-get install python3-pip  # pip3を導入済みなら不要
+$ sudo pip3 install slackbot        # slackbotライブラリをインストール
