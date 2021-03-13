@@ -6,7 +6,8 @@ from slackbot.bot import listen_to      # チャネル内発言で反応する�
 from slackbot.bot import default_reply  # 該当する応答がない場合に反応するデコーダ
 
 # projectsを読み込み
-with open(' projects_dict.pkl', 'rb') as f:
+pkl_file = 'C:/Users/ikuma/vscodeprojects/hacarus/hackason/hacarus_hackason/slackbot/plugins/tools/projects_dict.pkl'
+with open(pkl_file, 'rb') as f:
     projects = pickle.load(f)
 
 # projectのurlを確認
@@ -30,6 +31,9 @@ def mention_func(message):
     temp, pro_name, pro_url = text.split(None, 2)
     projects[pro_name] = pro_url
     message.reply('Successfully saved : ' + pro_name + ', ' + 'url :' + pro_url) 
+    # pklファイルに追加
+    with open(pkl_file,"wb") as f:
+        pickle.dump(projects, f)
     
 # projectの一覧を表示
 @respond_to(r'list project')
