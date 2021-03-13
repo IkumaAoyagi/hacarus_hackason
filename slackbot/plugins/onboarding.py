@@ -5,7 +5,8 @@ from slackbot.bot import listen_to      # チャネル内発言で反応する�
 from slackbot.bot import default_reply  # 該当する応答がない場合に反応するデコーダ
 
 # projectを格納
-projects = {'project_1': 'aaa', 'project_2': 'bbb', 'project_3': 'ccc'}
+projects = {'project_1': 'aaa', 'project_2': 'bbb', 'project_3': 'ccc',
+            'eva_project': 'https://docs.google.com/presentation/d/1N2U30XnBs8PrvKt0V-OS8uNSMX1FB0x7iMvZfOCt19w/edit#slide=id.gc753e8fd66_0_177'}
 
 # projectのurlを確認
 @respond_to(r'^join ')
