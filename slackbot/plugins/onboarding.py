@@ -36,7 +36,7 @@ def mention_func(message):
         pickle.dump(projects, f)
     
 # projectの一覧を表示
-@respond_to(r'list project')
+@respond_to(r'list')
 def mention_func(message):
     message.reply('Here is the project list : ' )
     for pro_name in projects.keys():
