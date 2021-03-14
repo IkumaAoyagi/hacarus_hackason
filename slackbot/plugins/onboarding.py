@@ -25,12 +25,12 @@ def mention_func(message):
             message.reply(pro_name)
 
 # projectのurlを更新
-@respond_to(r'^update ')
+@respond_to(r'^upload ')
 def mention_func(message):
     text = message.body['text']
     temp, pro_name, pro_url = text.split(None, 2)
     projects[pro_name] = pro_url
-    message.reply('Successfully saved : ' + pro_name + ', ' + 'url :' + pro_url) 
+    message.reply(pro_name + ' をリストに追加しました。') 
     # pklファイルに追加
     with open(pkl_file,"wb") as f:
         pickle.dump(projects, f)
