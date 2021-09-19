@@ -2,7 +2,7 @@ import slack
 import os
 import pickle
 
-OAUTH_TOKEN = "xoxb-1852333648325-1868123261569-mBamhbOAGNkGkY7QRYGsJcyh"
+OAUTH_TOKEN = "your access token"
 client = slack.WebClient(token=OAUTH_TOKEN)
 
 def load_workers():
